@@ -5,7 +5,7 @@ const Footer = () => {
     <>
       <Stack
         bgColor={"#171229"}
-        w={"100%"}
+        px={["2em", "2em", "8em", "8em", "8em"]}
         h={"100%"}
         flexDirection={"column"}
         paddingStart={"4em"}
