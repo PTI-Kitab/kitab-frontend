@@ -6,6 +6,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <Stack
       minH={"100vh"}
+      direction={"column"}
       bgImage={"/background/main.webp"}
       bgPosition={"top"}
       bgRepeat={"no-repeat"}
@@ -13,7 +14,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       justifyContent={"space-between"}
     >
       <NavBar />
-      {children}
+      <Stack direction={"column"}>{children}</Stack>
       <Footer />
     </Stack>
   );
