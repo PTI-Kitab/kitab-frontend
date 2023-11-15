@@ -5,7 +5,6 @@ const Kost101 = () => {
     <Stack
       bgColor={"white"}
       borderTopRadius={"2em"}
-      // boxShadow={"0px 5px 5px 2px rgba(0,0,0,0.24) inset"}
       boxShadow={"0px 5px 24px 8px rgba(0,0,0,0.3) inset"}
       paddingStart={"7em"}
       paddingEnd={"7em"}
@@ -30,11 +29,15 @@ const Kost101 = () => {
       <Stack paddingBottom={"12vh"}>
         <Divider border={"1px"} borderColor={"#171229"} variant={"solid"} />
 
-        <Stack flexDirection={"row"} paddingBottom={"3vh"} paddingTop={"3vh"}>
-          <Image src="home/ArticleDotList.png" w={"1.4em"} />
+        <Stack
+          flexDirection={"row"}
+          paddingBottom={"3.5vh"}
+          paddingTop={"3.5vh"}
+        >
+          <Image src="home/ArticleDotList.png" w={"1.8em"} />
           {/* isi judul artikel lo dibawah disini cok */}
           <Text
-            fontSize={"1xl"}
+            fontSize={"xl"}
             marginLeft={"1.4em"}
             fontWeight={"semibold"}
             color={"rgba(0, 0, 0, 0.6)"}
@@ -45,11 +48,15 @@ const Kost101 = () => {
 
         <Divider border={"1px"} borderColor={"#171229"} variant={"solid"} />
 
-        <Stack flexDirection={"row"} paddingBottom={"3vh"} paddingTop={"3vh"}>
-          <Image src="home/ArticleDotList.png" w={"1.4em"} />
+        <Stack
+          flexDirection={"row"}
+          paddingBottom={"3.5vh"}
+          paddingTop={"3.5vh"}
+        >
+          <Image src="home/ArticleDotList.png" w={"1.8em"} />
           {/* isi judul artikel lo dibawah disini cok */}
           <Text
-            fontSize={"1xl"}
+            fontSize={"xl"}
             marginLeft={"1.4em"}
             fontWeight={"semibold"}
             color={"rgba(0, 0, 0, 0.6)"}
