@@ -120,8 +120,8 @@ const NavBar = () => {
           outlineColor={"gray.500"}
           outlineOffset={"-0.5px"}
           p={"1em"}
-          bgColor={"rgba(56, 68, 100, 0.25)"}
-          backdropFilter={"blur(4px)"}
+          bgColor={"rgba(0, 0, 0, 0.5)"}
+          backdropFilter={"blur(6px)"}
           roundedRight={"2em"}
         >
           {/* <DrawerCloseButton /> */}
@@ -139,7 +139,7 @@ const NavBar = () => {
             <Link
               href=""
               my={"1em"}
-              opacity={"0.5"}
+              opacity={"0.75"}
               _hover={{
                 opacity: "1",
               }}
@@ -154,7 +154,7 @@ const NavBar = () => {
             <Link
               href=""
               my={"1em"}
-              opacity={"0.5"}
+              opacity={"0.75"}
               _hover={{
                 opacity: "1",
               }}
@@ -169,7 +169,7 @@ const NavBar = () => {
             <Link
               href=""
               my={"1em"}
-              opacity={"0.5"}
+              opacity={"0.75"}
               _hover={{
                 opacity: "1",
               }}
