@@ -7,6 +7,7 @@ import {
   InputRightElement,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
+import Leaderboard from "@/components/layouts/Leaderboard";
 
 const IndexPage = () => {
   return (
@@ -35,6 +36,7 @@ const IndexPage = () => {
       <Text textColor={"white"} align={"center"}>
         membantu mahasiswa baru untuk beradaptasi
       </Text>
+
       <Image
         w={["16em", "16em", "32em", "32em", "32em"]}
         my={"4em"}
@@ -55,6 +57,7 @@ const IndexPage = () => {
           <SearchIcon pr={"1em"} boxSize={"10"} color={"gray.500"} />
         </InputRightElement>
       </InputGroup>
+      <Leaderboard />
     </Stack>
   );
 };
