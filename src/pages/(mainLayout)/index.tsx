@@ -7,7 +7,8 @@ import {
   InputRightElement,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
-import Leaderboard from "@/components/layouts/Leaderboard";
+import Leaderboard from "@/components/Leaderboard";
+import Kost101 from "@/components/Kost101";
 
 const IndexPage = () => {
   return (
@@ -15,11 +16,17 @@ const IndexPage = () => {
       direction={"column"}
       justify={"center"}
       align={"center"}
-      my={["4em", "4em", "8em", "8em", "8em"]}
+      mt={["2em", "2em", "4em", "4em", "4em"]}
     >
       <Text
         textColor={"white"}
-        fontSize={["x-large", "x-large", "xxx-large", "xxx-large", "xxx-large"]}
+        fontSize={[
+          "xx-large",
+          "xx-large",
+          "xxx-large",
+          "xxx-large",
+          "xxx-large",
+        ]}
         fontWeight={"extrabold"}
       >
         Kost Information to
@@ -27,7 +34,13 @@ const IndexPage = () => {
       <Text
         bgGradient="linear(to-b, #FFFFFF, #07799B)"
         bgClip="text"
-        fontSize={["x-large", "x-large", "xxx-large", "xxx-large", "xxx-large"]}
+        fontSize={[
+          "xx-large",
+          "xx-large",
+          "xxx-large",
+          "xxx-large",
+          "xxx-large",
+        ]}
         fontWeight={"extrabold"}
         mt={"-0.5em"}
       >
@@ -40,7 +53,7 @@ const IndexPage = () => {
       <Image
         w={["16em", "16em", "32em", "32em", "32em"]}
         my={"4em"}
-        fontSize={["x-small", "x-small", "medium", "medium", "medium"]}
+        fontSize={"md"}
         src="/home/kamar.png"
       />
       <Text pb={"1em"} textColor={"white"}>
@@ -57,7 +70,36 @@ const IndexPage = () => {
           <SearchIcon pr={"1em"} boxSize={"10"} color={"gray.500"} />
         </InputRightElement>
       </InputGroup>
-      <Leaderboard />
+      <Leaderboard
+        kosts={[
+          {
+            id: 1,
+            namaKamar: "Kost 1",
+            GambarKamar: ["/home/kamar_kos.png"],
+          },
+          {
+            id: 2,
+            namaKamar: "Kost Best",
+            GambarKamar: ["/home/kamar_kos.png"],
+          },
+          {
+            id: 3,
+            namaKamar: "Kost 2",
+            GambarKamar: ["/home/kamar_kos.png"],
+          },
+        ]}
+      />
+      <Kost101
+        articles={[
+          {
+            id: 1,
+            title: "Kost101 Example Page",
+            createdAt: "2021-10-10",
+            updatedAt: "2021-10-10",
+          },
+        ]}
+        isLoadCandidate={true}
+      />
     </Stack>
   );
 };
