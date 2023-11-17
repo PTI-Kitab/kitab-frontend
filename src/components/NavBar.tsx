@@ -17,6 +17,8 @@ import {
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 
+import { Link as RouterLink } from "react-router-dom";
+
 const NavBar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -43,7 +45,11 @@ const NavBar = () => {
         <HamburgerIcon w={8} h={8} />
       </Button>
 
-      <Link href="/" display={["none", "none", "flex", "flex", "flex"]}>
+      <Link
+        as={RouterLink}
+        to="/"
+        display={["none", "none", "flex", "flex", "flex"]}
+      >
         <Image src="/logo/logo_kitab_navbar.png" />
       </Link>
 
@@ -57,7 +63,8 @@ const NavBar = () => {
         // mx={"4em"}
       >
         <Link
-          href=""
+          as={RouterLink}
+          to=""
           opacity={"0.5"}
           _hover={{
             opacity: "1",
@@ -68,7 +75,8 @@ const NavBar = () => {
           Cari Kosan
         </Link>
         <Link
-          href=""
+          as={RouterLink}
+          to=""
           opacity={"0.5"}
           _hover={{
             opacity: "1",
@@ -79,7 +87,8 @@ const NavBar = () => {
           Kost 101
         </Link>
         <Link
-          href=""
+          as={RouterLink}
+          to=""
           opacity={"0.5"}
           _hover={{
             opacity: "1",
@@ -137,7 +146,8 @@ const NavBar = () => {
           <DrawerBody>
             <Divider orientation="horizontal" />
             <Link
-              href=""
+              as={RouterLink}
+              to=""
               my={"1em"}
               opacity={"0.75"}
               _hover={{
@@ -152,7 +162,8 @@ const NavBar = () => {
             </Link>
             <Divider orientation="horizontal" />
             <Link
-              href=""
+              as={RouterLink}
+              to=""
               my={"1em"}
               opacity={"0.75"}
               _hover={{
@@ -167,7 +178,8 @@ const NavBar = () => {
             </Link>
             <Divider orientation="horizontal" />
             <Link
-              href=""
+              as={RouterLink}
+              to=""
               my={"1em"}
               opacity={"0.75"}
               _hover={{
