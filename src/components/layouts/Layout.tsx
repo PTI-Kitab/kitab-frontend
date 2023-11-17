@@ -14,7 +14,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       justifyContent={"space-between"}
     >
       <NavBar />
-      <Stack direction={"column"}>{children}</Stack>
+      <Stack direction={"column"} flex={1}>
+        {children}
+      </Stack>
       <Footer />
     </Stack>
   );
