@@ -1,4 +1,4 @@
-import { Stack, Image, Divider } from "@chakra-ui/react";
+import { Stack, Image, Divider, Text } from "@chakra-ui/react";
 
 const Footer = () => {
   return (
@@ -23,11 +23,10 @@ const Footer = () => {
             color={"rgba(255, 255, 255, 0.6)"}
             paddingBottom={"10vh"}
           >
-            <Stack flex={"1"} py={"1em"}>
-              <p>KITAB (kost Information To Anak Baru).</p>
-              <p>Menyediakan solusi inovatif dalam pencarian</p>
-              <p>tempat tinggal bagi mahasiswa baru.</p>
-            </Stack>
+            <Text>
+              KITAB (kost Information To Anak Baru). Menyediakan solusi inovatif
+              dalam pencarian tempat tinggal bagi mahasiswa baru.
+            </Text>
           </Stack>
         </Stack>
         <Divider orientation="horizontal" />
@@ -37,7 +36,7 @@ const Footer = () => {
           color={"rgb(255, 255, 255)"}
           paddingTop={"2vh"}
         >
-          <p>&copy; 2023 KITAB. All right reserved.</p>
+          <Text>&copy; 2023 KITAB. All right reserved.</Text>
         </Stack>
       </Stack>
     </>
