@@ -141,14 +141,16 @@ const NavBar = () => {
             alignItems={"center"}
             justifyContent={"center"}
           >
-            <Image src="/logo/logo_kitab_navbar.png" />
+            <Link as={RouterLink} to={"/"}>
+              <Image src="/logo/logo_kitab_navbar.png" />
+            </Link>
           </DrawerHeader>
 
           <DrawerBody>
             <Divider orientation="horizontal" />
             <Link
               as={RouterLink}
-              to=""
+              to="/listings/"
               my={"1em"}
               opacity={"0.75"}
               _hover={{
@@ -164,7 +166,7 @@ const NavBar = () => {
             <Divider orientation="horizontal" />
             <Link
               as={RouterLink}
-              to=""
+              to="/#kost101"
               my={"1em"}
               opacity={"0.75"}
               _hover={{
@@ -180,7 +182,7 @@ const NavBar = () => {
             <Divider orientation="horizontal" />
             <Link
               as={RouterLink}
-              to=""
+              to="/aboutus/"
               my={"1em"}
               opacity={"0.75"}
               _hover={{
@@ -195,10 +197,6 @@ const NavBar = () => {
             </Link>
             <Divider orientation="horizontal" />
           </DrawerBody>
-
-          <DrawerFooter>
-            <Text>ini footer ya xixixi</Text>
-          </DrawerFooter>
         </DrawerContent>
       </Drawer>
     </Stack>
