@@ -18,8 +18,7 @@ type UserDto = Omit<User, "token"> & {
 
 type AuthContext = {
   user: User | null;
-  isAuthLoading: boolean;
-  isLoggedIn: boolean;
+  status: "loading" | "authenticated" | "unauthenticated";
   login: (email: string, password: string) => void;
   logout: () => void;
 };
@@ -30,15 +29,16 @@ type LoginDto = Pick<User, "id" | "email" | "role"> & {
 
 export const AuthContext = createContext<AuthContext>({
   user: null,
-  isAuthLoading: false,
-  isLoggedIn: false,
+  status: "loading",
   login: () => {},
   logout: () => {},
 });
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [isAuthLoading, setIsAuthLoading] = useState<boolean>(true);
+  const [status, setStatus] = useState<
+    "loading" | "authenticated" | "unauthenticated"
+  >("loading");
 
   const toast = useToast();
 
@@ -46,7 +46,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      setIsAuthLoading(false);
+      setStatus("unauthenticated");
       return;
     }
 
@@ -62,12 +62,17 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
           ...res.data.data,
           token: token,
         });
+
+        setStatus("authenticated");
       })
-      .finally(() => setIsAuthLoading(false));
+      .catch(() => {
+        localStorage.removeItem("token");
+        setStatus("unauthenticated");
+      });
   }, []);
 
   const login = (email: string, password: string) => {
-    setIsAuthLoading(true);
+    setStatus("loading");
     axios
       .post<ResponseModel<LoginDto>>(baseUrl + "/auth/login", {
         email,
@@ -96,6 +101,12 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
               duration: 3000,
               isClosable: true,
             });
+
+            setStatus("authenticated");
+          })
+          .catch(() => {
+            localStorage.removeItem("token");
+            setStatus("unauthenticated");
           });
       })
       .catch((err: AxiosError<ResponseErrorModel>) => {
@@ -106,8 +117,9 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
           duration: 3000,
           isClosable: true,
         });
-      })
-      .finally(() => setIsAuthLoading(false));
+
+        setStatus("unauthenticated");
+      });
   };
 
   const logout = () => {
@@ -123,14 +135,11 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
-  const isLoggedIn = !!user;
-
   return (
     <AuthContext.Provider
       value={{
         user,
-        isAuthLoading,
-        isLoggedIn,
+        status,
         login,
         logout,
       }}
