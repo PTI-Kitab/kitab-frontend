@@ -9,8 +9,55 @@ import {
 import { SearchIcon } from "@chakra-ui/icons";
 import Leaderboard from "@/components/Leaderboard";
 import Kost101 from "@/components/Kost101";
+import { useEffect, useState } from "react";
+import useApi, { ResponseModel, useToastErrorHandler } from "@/hooks/useApi";
+
+type Article101 = {
+  id: number;
+  title: string;
+  createdAt: string;
+  updatedAt: string;
+};
 
 const IndexPage = () => {
+  // hooks
+  const api = useApi();
+  const errorHandler = useToastErrorHandler();
+
+  // [Articles]
+  const [articles, setArticles] = useState<Article101[]>([]);
+  const [isLoadCandidate, setIsLoadCandidate] = useState<boolean>(true);
+
+  useEffect(() => {
+    api
+      .get<ResponseModel<Article101[]>>("/articles?page=1")
+      .then((res) => {
+        if (res.data.data.length < 5) {
+          setIsLoadCandidate(false);
+        }
+
+        setArticles(res.data.data);
+      })
+      .catch(errorHandler);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const onLoadMoreButton = () => {
+    api
+      .get<ResponseModel<Article101[]>>(
+        `/articles?page=${~~(articles.length / 5) + 1}`
+      )
+      .then((res) => {
+        if (res.data.data.length < 5) {
+          setIsLoadCandidate(false);
+        }
+
+        setArticles([...articles, ...res.data.data]);
+      })
+      .catch(errorHandler);
+  };
+
   return (
     <Stack
       direction={"column"}
@@ -75,30 +122,24 @@ const IndexPage = () => {
           {
             id: 1,
             namaKamar: "Kost 1",
-            GambarKamar: ["/home/kamar_kos.png"],
+            GambarKamar: ["home/kamar_kos.png"],
           },
           {
             id: 2,
             namaKamar: "Kost Best",
-            GambarKamar: ["/home/kamar_kos.png"],
+            GambarKamar: ["home/kamar_kos.png"],
           },
           {
             id: 3,
             namaKamar: "Kost 2",
-            GambarKamar: ["/home/kamar_kos.png"],
+            GambarKamar: ["home/kamar_kos.png"],
           },
         ]}
       />
       <Kost101
-        articles={[
-          {
-            id: 1,
-            title: "Kost101 Example Page",
-            createdAt: "2021-10-10",
-            updatedAt: "2021-10-10",
-          },
-        ]}
-        isLoadCandidate={true}
+        articles={articles}
+        isLoadCandidate={isLoadCandidate}
+        onLoadMoreButton={onLoadMoreButton}
       />
     </Stack>
   );
