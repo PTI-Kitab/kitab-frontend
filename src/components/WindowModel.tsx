@@ -11,7 +11,13 @@ export const MacWindowModel = ({ children }: { children: ReactNode }) => {
           <Box h={"1em"} w={"1em"} rounded={"full"} bgColor={"green.400"} />
         </Stack>
 
-        <Stack direction={"column"} flex={1} align="center" justify={"center"}>
+        <Stack
+          direction={"column"}
+          flex={1}
+          align="center"
+          justify={"center"}
+          color={"white"}
+        >
           {children}
         </Stack>
       </Stack>
