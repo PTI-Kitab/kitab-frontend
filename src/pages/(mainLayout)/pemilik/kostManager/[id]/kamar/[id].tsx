@@ -1,11 +1,12 @@
 import { MacWindowModel } from "@/components/WindowModel";
 import { Text } from "@chakra-ui/react";
-const LoginPage = () => {
+
+const SettingKamarPage = () => {
   return (
     <MacWindowModel>
-      <Text>Login Page</Text>
+      <Text>Setting Kamar Page</Text>
     </MacWindowModel>
   );
 };
 
-export default LoginPage;
+export default SettingKamarPage;

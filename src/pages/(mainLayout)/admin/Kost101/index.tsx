@@ -1,11 +1,12 @@
 import { MacWindowModel } from "@/components/WindowModel";
 import { Text } from "@chakra-ui/react";
-const LoginPage = () => {
+
+const Kost101Manager = () => {
   return (
     <MacWindowModel>
-      <Text>Login Page</Text>
+      <Text>User Profile Page</Text>
     </MacWindowModel>
   );
 };
 
-export default LoginPage;
+export default Kost101Manager;
