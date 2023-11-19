@@ -95,13 +95,17 @@ const ArticlePage = () => {
         mx={["2em", "2em", "8em", "8em", "8em"]}
         my={"1em"}
         bgColor={"rgba(255, 255, 255, 0.15)"}
+        backdropFilter={"blur(4px)"}
         rounded={"2xl"}
         color={"white"}
         textShadow={"md"}
         p={"1em"}
       >
         <Stack>
-          <Text fontWeight={"bold"} fontSize={"4xl"}>
+          <Text
+            fontWeight={"bold"}
+            fontSize={["2xl", "2xl", "4xl", "4xl", "4xl"]}
+          >
             {content?.title}
           </Text>
           <Text>

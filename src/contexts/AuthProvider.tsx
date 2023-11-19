@@ -133,6 +133,8 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
       duration: 3000,
       isClosable: true,
     });
+
+    setStatus("unauthenticated");
   };
 
   return (

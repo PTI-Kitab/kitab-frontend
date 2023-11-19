@@ -79,7 +79,7 @@ const Kost101 = ({
               <Text
                 fontSize={["md", "md", "xl", "xl", "xl"]}
                 ml={"1em"}
-                fontWeight={"semibold"}
+                fontWeight={"medium"}
                 color={"rgba(0, 0, 0, 0.6)"}
                 // isTruncated
                 noOfLines={2}

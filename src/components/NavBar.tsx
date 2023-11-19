@@ -1,6 +1,5 @@
 import {
   Stack,
-  Text,
   Button,
   Image,
   Link,
@@ -10,17 +9,23 @@ import {
   DrawerContent,
   // DrawerCloseButton,
   DrawerHeader,
-  DrawerFooter,
   Drawer,
   useDisclosure,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  Text,
+  Icon,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { useState } from "react";
 
 import { Link as RouterLink } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
+
+import { FaPen, FaRightFromBracket } from "react-icons/fa6";
 
 const NavBar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const auth = useAuth();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -100,11 +105,11 @@ const NavBar = () => {
           Tentang Kami
         </Link>
       </Stack>
-      {!isLoggedIn && (
+
+      {auth.status === "unauthenticated" && (
         <Button
-          onClick={() => {
-            setIsLoggedIn(!isLoggedIn);
-          }}
+          as={RouterLink}
+          to={"/login"}
           variant={"solid"}
           colorScheme={"blue"}
           w={"6em"}
@@ -117,12 +122,91 @@ const NavBar = () => {
         </Button>
       )}
 
-      {isLoggedIn && (
-        <Avatar
-          onClick={() => {
-            setIsLoggedIn(!isLoggedIn);
-          }}
-        />
+      {auth.status === "authenticated" && (
+        <Popover placement="bottom-end">
+          <PopoverTrigger>
+            <Avatar
+              src={`https://api.multiavatar.com/${auth.user?.firstName}.svg`}
+              cursor={"pointer"}
+            />
+          </PopoverTrigger>
+
+          <PopoverContent bgColor={"transparent"} borderColor={"transparent"}>
+            <Stack direction={"column"}>
+              <Stack
+                rounded={"3xl"}
+                roundedTopEnd={"none"}
+                bgColor={"#D9D9D9"}
+                p={"1em"}
+                align={"center"}
+              >
+                <Avatar
+                  size={"2xl"}
+                  src={`https://api.multiavatar.com/${auth.user?.firstName}.svg`}
+                />
+                <Button
+                  as={RouterLink}
+                  to={"/profile"}
+                  size={"sm"}
+                  variant={"outline"}
+                  color={"blackAlpha.700"}
+                  rounded={"2xl"}
+                  // outlineColor={"blackAlpha.700"}
+                  rightIcon={<Icon as={FaPen} />}
+                >
+                  Edit Profil
+                </Button>
+
+                <Text color={"blackAlpha.700"}>{auth.user?.email}</Text>
+                <Text fontWeight={"bold"} fontSize={"xl"}>
+                  {auth.user?.firstName} {auth.user?.lastName}
+                </Text>
+              </Stack>
+              {auth.user?.role === "client" && (
+                <Button
+                  as={RouterLink}
+                  to={"/pemilik/myKost/"}
+                  bgColor={"#D9D9D9"}
+                  rounded={"2xl"}
+                >
+                  MyKost
+                </Button>
+              )}
+              {auth.user?.role === "admin" && (
+                <Button
+                  as={RouterLink}
+                  to={"/admin/"}
+                  bgColor={"#D9D9D9"}
+                  rounded={"2xl"}
+                >
+                  Admin Console
+                </Button>
+              )}
+              {auth.user?.role === "pemilik" && (
+                <Button
+                  as={RouterLink}
+                  to={"/pemilik/"}
+                  bgColor={"#D9D9D9"}
+                  rounded={"2xl"}
+                >
+                  Pemilik Space
+                </Button>
+              )}
+
+              <Button
+                bgColor={"#D9D9D9"}
+                color={"red.700"}
+                rounded={"2xl"}
+                rightIcon={<Icon as={FaRightFromBracket} />}
+                onClick={() => {
+                  auth.logout();
+                }}
+              >
+                Log out
+              </Button>
+            </Stack>
+          </PopoverContent>
+        </Popover>
       )}
 
       <Drawer isOpen={isOpen} onClose={onClose} placement="left">

@@ -74,7 +74,7 @@ const IndexPage = () => {
           "xxx-large",
           "xxx-large",
         ]}
-        fontWeight={"extrabold"}
+        fontWeight={"semibold"}
       >
         Kost Information to
       </Text>

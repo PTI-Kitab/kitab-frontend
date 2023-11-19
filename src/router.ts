@@ -7,8 +7,7 @@ export type Path =
   | `/`
   | `/aboutus`
   | `/admin`
-  | `/admin/Kost101`
-  | `/admin/Kost101/:articleId`
+  | `/admin/cms`
   | `/articles/:id`
   | `/client/myKost`
   | `/kost/:kostId`
@@ -25,7 +24,6 @@ export type Path =
   | `/register`
 
 export type Params = {
-  '/admin/Kost101/:articleId': { articleId: string }
   '/articles/:id': { id: string }
   '/kost/:kostId': { kostId: string }
   '/kost/:kostId/kamar/:kamarId': { kostId: string; kamarId: string }

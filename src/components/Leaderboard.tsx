@@ -40,7 +40,7 @@ const Leaderboard = ({ kosts }: { kosts: KostListing[] }) => {
             <Text
               as="span"
               bgClip={"text"}
-              fontWeight={"extrabold"}
+              fontWeight={"bold"}
               bgGradient="linear(to-b, #FFFFFF, #07799B)"
             >
               Bulan ini
@@ -70,16 +70,14 @@ const Leaderboard = ({ kosts }: { kosts: KostListing[] }) => {
             gap={0}
           >
             <Image
-              src={`${import.meta.env.VITE_API_BASE_URL}/${
-                kosts[0].GambarKamar[0]
-              }`}
+              src={kosts[0].GambarKamar[0]}
               h={"75%"}
               objectFit={"cover"}
               rounded={"3xl"}
               boxShadow={"0px 4px 8px rgba(0, 0, 0, 0.25)"}
             />
             <Stack h={"20%"} align={"center"} justify={"center"}>
-              <Text fontWeight={"bold"} fontSize={"lg"}>
+              <Text fontWeight={"semibold"} fontSize={"lg"}>
                 {kosts[0].namaKamar}
               </Text>
             </Stack>
@@ -94,16 +92,14 @@ const Leaderboard = ({ kosts }: { kosts: KostListing[] }) => {
             gap={0}
           >
             <Image
-              src={`${import.meta.env.VITE_API_BASE_URL}/${
-                kosts[1].GambarKamar[0]
-              }`}
+              src={kosts[1].GambarKamar[0]}
               h={"80%"}
               objectFit={"cover"}
               rounded={"3xl"}
               boxShadow={"0px 4px 8px rgba(0, 0, 0, 0.25)"}
             />
             <Stack h={"20%"} align={"center"} justify={"center"}>
-              <Text fontWeight={"bold"}>{kosts[1].namaKamar}</Text>
+              <Text fontWeight={"semibold"}>{kosts[1].namaKamar}</Text>
             </Stack>
           </Stack>
           <Stack
@@ -116,16 +112,14 @@ const Leaderboard = ({ kosts }: { kosts: KostListing[] }) => {
             gap={0}
           >
             <Image
-              src={`${import.meta.env.VITE_API_BASE_URL}/${
-                kosts[2].GambarKamar[0]
-              }`}
+              src={kosts[2].GambarKamar[0]}
               h={"80%"}
               objectFit={"cover"}
               rounded={"3xl"}
               boxShadow={"0px 4px 8px rgba(0, 0, 0, 0.25)"}
             />
             <Stack h={"20%"} align={"center"} justify={"center"}>
-              <Text fontWeight={"bold"} fontSize={"lg"}>
+              <Text fontWeight={"semibold"} fontSize={"lg"}>
                 {kosts[2].namaKamar}
               </Text>
             </Stack>
@@ -154,16 +148,14 @@ const Leaderboard = ({ kosts }: { kosts: KostListing[] }) => {
             }}
           >
             <Image
-              src={`${import.meta.env.VITE_API_BASE_URL}/${
-                kosts[0].GambarKamar[0]
-              }`}
+              src={kosts[0].GambarKamar[0]}
               h={"80%"}
               objectFit={"cover"}
               rounded={"3xl"}
               boxShadow={"0px 4px 8px rgba(0, 0, 0, 0.25)"}
             />
             <Stack h={"20%"} align={"center"} justify={"center"}>
-              <Text fontWeight={"bold"}>{kosts[0].namaKamar}</Text>
+              <Text fontWeight={"semibold"}>{kosts[0].namaKamar}</Text>
             </Stack>
           </Stack>
           <Stack
@@ -181,16 +173,14 @@ const Leaderboard = ({ kosts }: { kosts: KostListing[] }) => {
             }}
           >
             <Image
-              src={`${import.meta.env.VITE_API_BASE_URL}/${
-                kosts[1].GambarKamar[0]
-              }`}
+              src={kosts[1].GambarKamar[0]}
               h={"80%"}
               objectFit={"cover"}
               rounded={"3xl"}
               boxShadow={"0px 4px 8px rgba(0, 0, 0, 0.25)"}
             />
             <Stack h={"20%"} align={"center"} justify={"center"}>
-              <Text fontWeight={"bold"} fontSize={"lg"}>
+              <Text fontWeight={"semibold"} fontSize={"lg"}>
                 {kosts[1].namaKamar}
               </Text>
             </Stack>
@@ -210,16 +200,14 @@ const Leaderboard = ({ kosts }: { kosts: KostListing[] }) => {
             }}
           >
             <Image
-              src={`${import.meta.env.VITE_API_BASE_URL}/${
-                kosts[2].GambarKamar[0]
-              }`}
+              src={kosts[2].GambarKamar[0]}
               h={"80%"}
               objectFit={"cover"}
               rounded={"3xl"}
               boxShadow={"0px 4px 8px rgba(0, 0, 0, 0.25)"}
             />
             <Stack h={"20%"} align={"center"} justify={"center"}>
-              <Text fontWeight={"bold"}>{kosts[2].namaKamar}</Text>
+              <Text fontWeight={"semibold"}>{kosts[2].namaKamar}</Text>
             </Stack>
           </Stack>
         </Stack>
