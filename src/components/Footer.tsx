@@ -15,7 +15,11 @@ const Footer = () => {
       >
         <Stack w={"100%"} h={"100%"}>
           <Stack>
-            <Image src="logo/logo_footer.png" w={"8em"} paddingBottom={"1vh"} />
+            <Image
+              src="/logo/logo_footer.png"
+              w={"8em"}
+              paddingBottom={"1vh"}
+            />
           </Stack>
           <Stack
             w={"100%"}
