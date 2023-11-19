@@ -11,12 +11,15 @@ type Article = {
 const Kost101 = ({
   articles,
   isLoadCandidate,
+  onLoadMoreButton,
 }: {
   articles: Article[];
   isLoadCandidate: boolean;
+  onLoadMoreButton: () => void;
 }) => {
   return (
     <Stack
+      id="kost101"
       bgColor={"white"}
       borderTopRadius={"2em"}
       boxShadow={"0px 5px 24px 8px rgba(0,0,0,0.3) inset"}
@@ -43,13 +46,15 @@ const Kost101 = ({
       </Text>
 
       <Stack>
+        <Divider border={"1px"} borderColor={"#171229"} variant={"solid"} />
+
         {articles.map((article) => (
           <>
-            <Divider border={"1px"} borderColor={"#171229"} variant={"solid"} />
-
             <Stack
               as={Link}
-              to={`/articles/${article.id}`}
+              to={{
+                pathname: `/articles/${article.id}`,
+              }}
               flexDirection={"row"}
               align={"center"}
               py={"1em"}
@@ -82,7 +87,6 @@ const Kost101 = ({
                 {article.title}
               </Text>
             </Stack>
-
             <Divider border={"1px"} borderColor={"#171229"} variant={"solid"} />
           </>
         ))}
@@ -93,6 +97,7 @@ const Kost101 = ({
           variant={"ghost"}
           fontWeight={"semibold"}
           color={"rgba(0, 0, 0, 0.6)"}
+          onClick={onLoadMoreButton}
         >
           Load more...
         </Button>
