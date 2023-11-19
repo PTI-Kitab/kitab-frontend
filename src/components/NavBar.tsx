@@ -64,7 +64,7 @@ const NavBar = () => {
       >
         <Link
           as={RouterLink}
-          to=""
+          to="/listings/"
           opacity={"0.5"}
           _hover={{
             opacity: "1",
@@ -75,8 +75,9 @@ const NavBar = () => {
           Cari Kosan
         </Link>
         <Link
-          as={RouterLink}
-          to=""
+          href="/#kost101"
+          // as={RouterLink}
+          // to="/#kost101"
           opacity={"0.5"}
           _hover={{
             opacity: "1",
@@ -88,7 +89,7 @@ const NavBar = () => {
         </Link>
         <Link
           as={RouterLink}
-          to=""
+          to="/aboutus/"
           opacity={"0.5"}
           _hover={{
             opacity: "1",
