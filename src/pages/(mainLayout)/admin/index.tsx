@@ -10,6 +10,7 @@ import {
   FaHouse,
   FaMoneyBill,
   FaMoneyCheckDollar,
+  FaNewspaper,
   FaUsers,
 } from "react-icons/fa6";
 
@@ -19,6 +20,7 @@ type AdminStatistics = {
   semuaBooking: number;
   semuaClient: number;
   semuaPemilik: number;
+  semuaArticles: number;
   totalCashFlow: number;
   totalEarning: number;
 };
@@ -36,7 +38,7 @@ const StatCard = ({
     <Stack
       direction={"row"}
       p={"1em"}
-      w={"16em"}
+      w={["full", "full", "16em", "16em", "16em"]}
       bg={"whiteAlpha.200"}
       rounded={"2xl"}
       color={"white"}
@@ -71,6 +73,7 @@ const AdminDashboardPage = () => {
     semuaKamar: 0,
     semuaKost: 0,
     semuaPemilik: 0,
+    semuaArticles: 0,
     totalCashFlow: 0,
     totalEarning: 0,
   });
@@ -128,6 +131,11 @@ const AdminDashboardPage = () => {
             title="Jumlah Client"
             value={statistics.semuaClient}
             icon={FaGraduationCap}
+          />
+          <StatCard
+            title="Jumlah Artikel"
+            value={statistics.semuaArticles}
+            icon={FaNewspaper}
           />
         </Stack>
       </Stack>
