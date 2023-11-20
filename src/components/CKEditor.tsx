@@ -39,9 +39,12 @@ const CKEditorWrapper = ({ name, control, defaultValue }: CKEditorProps) => {
     <Controller
       name={name}
       control={control}
-      defaultValue={defaultValue}
-      render={({ field: { onChange, value } }) => (
+      defaultValue={defaultValue ?? ""}
+      render={({ field: { onChange, onBlur, value, ref, disabled } }) => (
         <CKEditor
+          ref={ref}
+          onBlur={onBlur}
+          disabled={disabled}
           editor={ClassicEditor}
           config={{
             plugins: [

@@ -14,7 +14,6 @@ export type Path =
   | `/kost/:kostId/kamar/:kamarId`
   | `/listings`
   | `/login`
-  | `/pemilik`
   | `/pemilik/kostManager`
   | `/pemilik/kostManager/:id`
   | `/pemilik/kostManager/:id/kamar`
