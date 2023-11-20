@@ -103,7 +103,7 @@ const LoginPage = () => {
                     message: "Password minimal 8 karakter",
                   },
                 })}
-                type={showPass ? "password" : "text"}
+                type={showPass ? "text" : "password"}
                 color={"white"}
                 placeholder="Password"
                 rounded={"1em"}
