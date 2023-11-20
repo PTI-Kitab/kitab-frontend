@@ -165,7 +165,7 @@ const NavBar = () => {
               {auth.user?.role === "client" && (
                 <Button
                   as={RouterLink}
-                  to={"/pemilik/myKost/"}
+                  to={"/client/myKost/"}
                   bgColor={"#D9D9D9"}
                   rounded={"2xl"}
                 >
@@ -185,7 +185,7 @@ const NavBar = () => {
               {auth.user?.role === "pemilik" && (
                 <Button
                   as={RouterLink}
-                  to={"/pemilik/"}
+                  to={"/pemilik/kostManager/"}
                   bgColor={"#D9D9D9"}
                   rounded={"2xl"}
                 >
