@@ -59,7 +59,7 @@ const DashboardLayout = ({
         </Stack>
 
         {menus.map((m) => {
-          if (loc.pathname === m.path) {
+          if (loc.pathname.includes(m.path)) {
             return (
               <Button
                 w={"full"}
