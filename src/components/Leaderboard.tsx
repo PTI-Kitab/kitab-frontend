@@ -132,6 +132,8 @@ const Leaderboard = ({ kosts }: { kosts: KostListing[] }) => {
           w={"full"}
           align={"end"}
           display={["none", "none", "flex", "flex", "flex"]}
+          justify={"center"}
+          alignItems={"center"}
         >
           <Stack
             as={Link}
