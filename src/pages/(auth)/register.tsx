@@ -55,13 +55,18 @@ const RegisterPage = () => {
       >
         Anak baru.
       </Text>
-      <Tabs variant="soft-rounded" defaultIndex={1}>
+      <Tabs
+        variant="soft-rounded"
+        defaultIndex={1}
+        // display={"flex"}
+        align="center"
+        // justifyContent={"center"}
+      >
         <TabList
           justifyContent={"center"}
           bgColor={"rgba(255, 255, 255, 0.1)"}
           rounded={"2em"}
           p={"0.25em"}
-          ml={"25%"}
           w={"16em"}
         >
           <Tab
