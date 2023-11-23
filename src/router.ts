@@ -15,20 +15,19 @@ export type Path =
   | `/listings`
   | `/login`
   | `/pemilik/kostManager`
-  | `/pemilik/kostManager/:id`
-  | `/pemilik/kostManager/:id/kamar`
-  | `/pemilik/kostManager/:id/kamar/:id`
+  | `/pemilik/kostManager/:kostId`
+  | `/pemilik/kostManager/:kostId/kamar/:kamarId`
   | `/pemilik/payout`
   | `/profile`
   | `/register`
+  | `/terms`
 
 export type Params = {
   '/articles/:id': { id: string }
   '/kost/:kostId': { kostId: string }
   '/kost/:kostId/kamar/:kamarId': { kostId: string; kamarId: string }
-  '/pemilik/kostManager/:id': { id: string }
-  '/pemilik/kostManager/:id/kamar': { id: string }
-  '/pemilik/kostManager/:id/kamar/:id': { id: string; id: string }
+  '/pemilik/kostManager/:kostId': { kostId: string }
+  '/pemilik/kostManager/:kostId/kamar/:kamarId': { kostId: string; kamarId: string }
 }
 
 export type ModalPath = never

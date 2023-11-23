@@ -50,8 +50,10 @@ const DashboardLayout = ({
         backdropFilter={"blur(4px)"}
         p={"1em"}
         align={"center"}
+        h={"fit-content"}
+        pos={"sticky"}
       >
-        <Stack h={"20%"} w={"full"} align={"center"} justify={"center"}>
+        <Stack h={"8em"} w={"full"} align={"center"} justify={"center"}>
           <Text fontWeight={"bold"} fontSize={"2xl"}>
             {title}
           </Text>

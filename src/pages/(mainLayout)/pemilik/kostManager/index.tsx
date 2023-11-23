@@ -21,6 +21,7 @@ import {
   Input,
   FormErrorMessage,
   Select,
+  Spinner,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -110,6 +111,7 @@ const KostManagerPage = () => {
 
   const [kostListing, setKostListing] = useState<KostListing[]>([]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const fetchKostListing = () => {
     api
@@ -117,7 +119,8 @@ const KostManagerPage = () => {
       .then((res) => {
         setKostListing(res.data.data);
       })
-      .catch(handleError);
+      .catch(handleError)
+      .finally(() => setIsLoading(false));
   };
 
   useEffect(() => {
@@ -134,6 +137,14 @@ const KostManagerPage = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
+
+  if (isLoading) {
+    return (
+      <Stack flex={1} align={"center"} justify={"center"}>
+        <Spinner color="white" size={"xl"} />
+      </Stack>
+    );
+  }
 
   return (
     <Stack direction={"column"} justify={"space-between"} h={"full"}>
@@ -368,7 +379,7 @@ const KostManagerPage = () => {
               <Text fontWeight={"bold"} fontSize={"xl"} my={"1em"}>
                 Gambar Kost
               </Text>
-              <FormControl my={"1em"}>
+              <FormControl my={"1em"} isInvalid={!!errors.GambarKost}>
                 <FormLabel>Gambar Kost (Max. 5 File)</FormLabel>
                 <DropZone
                   control={control}
@@ -385,7 +396,13 @@ const KostManagerPage = () => {
 
             <ModalFooter>
               <Button type="submit">Buat</Button>
-              <Button ml={3} onClick={() => setIsOpen(false)}>
+              <Button
+                ml={3}
+                onClick={() => {
+                  reset();
+                  setIsOpen(false);
+                }}
+              >
                 Close
               </Button>
             </ModalFooter>
