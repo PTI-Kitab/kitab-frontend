@@ -11,6 +11,7 @@ import Leaderboard from "@/components/Leaderboard";
 import Kost101 from "@/components/Kost101";
 import { useEffect, useState } from "react";
 import useApi, { ResponseModel, useToastErrorHandler } from "@/hooks/useApi";
+import ScrollToHashElement from "@/components/ScrollToHash";
 
 type Article101 = {
   id: number;
@@ -65,6 +66,7 @@ const IndexPage = () => {
       align={"center"}
       mt={["2em", "2em", "4em", "4em", "4em"]}
     >
+      <ScrollToHashElement />
       <Text
         textColor={"white"}
         fontSize={[

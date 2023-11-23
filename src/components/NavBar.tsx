@@ -80,9 +80,8 @@ const NavBar = () => {
           Cari Kosan
         </Link>
         <Link
-          href="/#kost101"
-          // as={RouterLink}
-          // to="/#kost101"
+          as={RouterLink}
+          to="/#kost101"
           opacity={"0.5"}
           _hover={{
             opacity: "1",
