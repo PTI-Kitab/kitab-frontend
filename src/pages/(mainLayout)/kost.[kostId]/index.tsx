@@ -53,6 +53,51 @@ const KostPage = () => {
         </Text>
         <Text fontSize={"large"}>Pak Haji Dul (PHD)</Text>
         <Text fontSize={"large"}>No Telp: </Text>
+        <Divider orientation="horizontal" pt={"2em"} gap={0} />
+        <Stack>
+          <Stack direction={"row"} justify={"space-evenly"}>
+            <Stack direction={"column"}>
+              <Text fontSize={"x-large"} pt={"1em"}>
+                Detail Kamar
+              </Text>
+              <Stack direction={"column"} px={"1em"}>
+                <Text>Tipe kamar 3x3</Text>
+                <Text>Kamar mandi dalam</Text>
+                <Text>Listrik (tidak termasuk)</Text>
+                <Text>Air (termasuk)</Text>
+              </Stack>
+            </Stack>
+
+            <Stack direction={"column"}>
+              <Text fontSize={"x-large"} pt={"1em"}>
+                Fitur Tambahan
+              </Text>
+              <Stack direction={"column"} px={"1em"}>
+                <Text>Wi-Fi</Text>
+                <Text>Mesin cuci</Text>
+                <Text>Jemuran</Text>
+                <Text>Pendingin ruangan</Text>
+              </Stack>
+            </Stack>
+          </Stack>
+          <Divider orientation="horizontal" pt={"2em"} gap={0} />
+          <Stack direction={"row"} justify={"start"}>
+            <Stack direction={"column"}>
+              <Text fontSize={"xx-large"}>Peraturan Kamar</Text>
+              <Stack direction={"column"} px={"1em"}>
+                <Text fontSize={"large"}>
+                  Tidak diperbolehkan menginap (kalo tititnya kecil)
+                </Text>
+                <Text fontSize={"large"}>
+                  Tidak diperbolehkan membawa hewan peliharaan
+                </Text>
+                <Text fontSize={"large"}>
+                  Batas tamu berkunjung smapai dengan jam 10 malam
+                </Text>
+              </Stack>
+            </Stack>
+          </Stack>
+        </Stack>
         <Stack pt={"2em"} rounded={"2em"}>
           <AspectRatio ratio={[16 / 10, 16 / 10, 16 / 10, 16 / 5, 16 / 5]}>
             <iframe src="https://maps.google.com/maps?q=-6.253803,106.617185&hl=en&z=14&amp;output=embed"></iframe>
