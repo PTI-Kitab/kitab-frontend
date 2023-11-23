@@ -1,17 +1,49 @@
-import { Stack, Text, Image, HStack, Button } from "@chakra-ui/react";
+import {
+  Stack,
+  Text,
+  Image,
+  HStack,
+  Button,
+  Icon,
+  Badge,
+  Tooltip,
+} from "@chakra-ui/react";
+import {
+  FaLocationDot,
+  FaPerson,
+  FaPersonDress,
+  FaShuffle,
+} from "react-icons/fa6";
+import { Link as RouterLink } from "react-router-dom";
 
-const ListingsList = () => {
+type Kamar = {
+  GambarKamar: string[];
+  id: number;
+  gender: "pria" | "wanita" | "campur";
+  kost: {
+    id: number;
+    namaKost: string;
+    alamat: string;
+  };
+  namaKamar: string;
+  harga: number;
+  ukuran: string;
+  capacity: number;
+};
+
+const ListingsList = ({ kamar }: { kamar: Kamar }) => {
   return (
     <>
       <Stack
         bgColor={"whiteAlpha.200"}
+        backdropFilter={"blur(4px)"}
         borderRadius={"1em"}
         border={"0.05em solid #718096"}
         flexDirection={"row"}
       >
         <Stack
-          flex={"0.8"}
-          bgImage={"/home/kamar_kos.png"}
+          flex={1}
+          bgImage={kamar.GambarKamar[0]}
           bgPos={"center"}
           bgSize={"cover"}
           rounded={"2xl"}
@@ -29,20 +61,46 @@ const ListingsList = () => {
             direction={"column"}
             justify={"space-between"}
           >
-            <Stack direction={"column"}>
-              <Text fontSize={["md", "xl", "2xl", "2xl", "2xl"]}>
-                Treasure Kost
-              </Text>
-              <HStack paddingBottom={["0.2em", "0.8em", "1em", "1em", "1em"]}>
-                <Image src="/logo/LocationIcon.png" w={"0.7em"} />
+            <Stack direction={"column"} gap={0}>
+              <Stack direction={"row"} align={"center"}>
+                <Text fontSize={["md", "xl", "2xl", "2xl", "2xl"]}>
+                  {kamar.namaKamar}
+                </Text>
+
+                <Tooltip
+                  label={`Kamar ini ${
+                    kamar.gender !== "campur" ? "khusus " : ""
+                  }${kamar.gender}`}
+                >
+                  <Stack>
+                    <Icon
+                      as={
+                        kamar.gender === "pria"
+                          ? FaPerson
+                          : kamar.gender === "wanita"
+                          ? FaPersonDress
+                          : FaShuffle
+                      }
+                      color={"white"}
+                    />
+                  </Stack>
+                </Tooltip>
+              </Stack>
+
+              <RouterLink to={`/kost/${kamar.kost.id}`}>
+                {kamar.kost.namaKost}
+              </RouterLink>
+
+              <HStack>
+                <Icon as={FaLocationDot} color={"white"} />
                 <Text
                   fontSize={["xs", "xs", "sm", "sm", "sm"]}
                   fontWeight={"thin"}
                 >
-                  Desa Curug Sangereng, Kelapa Dua
+                  {kamar.kost.alamat}
                 </Text>
               </HStack>
-              <Stack spacing={"0em"}>
+              <Stack spacing={"0em"} my={"1em"}>
                 <Text fontSize={"xs"} fontWeight={"thin"}>
                   Harga mulai dari
                 </Text>
@@ -50,18 +108,17 @@ const ListingsList = () => {
                   fontSize={["xs", "sm", "sm", "sm", "sm"]}
                   fontWeight={"semi"}
                 >
-                  Rp. 1.470.000,00/bln
+                  {Intl.NumberFormat("id-ID", {
+                    style: "currency",
+                    currency: "IDR",
+                  }).format(kamar.harga)}
+                  /bln
                 </Text>
               </Stack>
-              <Stack
-                direction={"column"}
-                display={"flex"}
-                justifyContent={"end"}
-                w={"100%"}
-                paddingTop={["0.5em", "1.5em", "1.8em", "1.8em", "0em"]}
-              ></Stack>
             </Stack>
             <Button
+              as={RouterLink}
+              to={`/kost/${kamar.kost.id}/kamar/${kamar.id}/`}
               w={"10em"}
               fontSize={"xs"}
               fontWeight={"semi"}
