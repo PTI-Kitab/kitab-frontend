@@ -19,7 +19,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "baseUrl": "./src",                                  /* Specify the base directory to resolve non-relative module names. */
+
+    // Path Aliasing
+    "baseUrl": "./src",
     "paths": {
       "@/*": ["*"],
       "@/components/*": ["components/*"],
