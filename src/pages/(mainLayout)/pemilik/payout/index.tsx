@@ -5,7 +5,6 @@ import {
   Text,
   Stack,
   Tooltip,
-  Icon,
   Button,
   ListItem,
   UnorderedList,

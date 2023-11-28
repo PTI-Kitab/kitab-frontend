@@ -37,6 +37,9 @@ const NavBar = () => {
       // bgColor={"blue.200"}
       px={["2em", "2em", "8em", "8em", "8em"]}
       h={"6em"}
+      pos={["sticky", "sticky", "static", "static", "static"]}
+      top={"0"}
+      zIndex={100}
     >
       <Button
         variant={"ghost"}

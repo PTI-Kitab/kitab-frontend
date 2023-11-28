@@ -1,6 +1,17 @@
 import useApi, { ResponseModel, useToastErrorHandler } from "@/hooks/useApi";
 import { useAuth } from "@/hooks/useAuth";
-import { Box, Icon, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Icon,
+  Stack,
+  Stat,
+  StatArrow,
+  StatGroup,
+  StatHelpText,
+  StatLabel,
+  StatNumber,
+  Text,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { IconType } from "react-icons";
 import {
@@ -49,15 +60,14 @@ const StatCard = ({
         <Icon as={icon} boxSize={"2em"} color={"white"} />
       </Stack>
 
-      <Stack gap={0}>
-        <Text textColor={"white"} mb={"-1em"}>
-          {title}
-        </Text>
-
-        <Text fontWeight={"white"} fontSize={"4xl"}>
-          {value}
-        </Text>
-      </Stack>
+      <Stat mx={"1em"}>
+        <StatLabel>{title}</StatLabel>
+        <StatNumber my={"-0.4em"}>{value}</StatNumber>
+        <StatHelpText>
+          <StatArrow type="increase" />
+          {~~(Math.random() * 100)}%
+        </StatHelpText>
+      </Stat>
     </Stack>
   );
 };
