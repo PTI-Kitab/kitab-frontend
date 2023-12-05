@@ -66,7 +66,7 @@ const KostPage = () => {
 
   const [kost, setKost] = useState<KostDetail | null>(null);
   const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     api
@@ -92,7 +92,7 @@ const KostPage = () => {
 
   if (!kost) {
     return (
-      <Stack flex={1} align={"center"} justify={"center"}>
+      <Stack flex={1} align={"center"} justify={"center"} color={"white"}>
         <Text>Tidak dapat menemukan kost</Text>
       </Stack>
     );
