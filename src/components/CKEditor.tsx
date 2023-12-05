@@ -4,7 +4,6 @@ import { useAuth } from "@/hooks/useAuth";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import Editor from "ckeditor5-custom-build/build/ckeditor";
 import {} from "@emotion/styled";
-import { CSSReset } from "@chakra-ui/react";
 
 // integrate with react-hook-form
 type CKEditorProps = {
@@ -24,7 +23,6 @@ const CKEditorWrapper = ({ name, control, defaultValue }: CKEditorProps) => {
       defaultValue={defaultValue}
       render={({ field: { onChange, onBlur, value, ref, disabled } }) => (
         <>
-          <CSSReset />
           <CKEditor
             ref={ref}
             onBlur={onBlur}
@@ -35,9 +33,6 @@ const CKEditorWrapper = ({ name, control, defaultValue }: CKEditorProps) => {
                 // The URL that the images are uploaded to.
                 uploadUrl:
                   import.meta.env.VITE_API_BASE_URL + "/upload/ckEditor/",
-
-                // Enable the XMLHttpRequest.withCredentials property.
-                withCredentials: true,
 
                 // Headers sent along with the XMLHttpRequest to the upload server.
                 headers: {
