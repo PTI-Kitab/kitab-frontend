@@ -20,6 +20,25 @@ const theme = extendTheme({
     heading: `'Kanit', sans-serif`,
     body: `'Kanit', sans-serif`,
   },
+  styles: {
+    global: {
+      h2: {
+        fontSize: "2xl",
+        fontWeight: "bold",
+      },
+      h3: {
+        fontSize: "xl",
+        fontWeight: "bold",
+      },
+      h4: {
+        fontSize: "lg",
+        fontWeight: "bold",
+      },
+      // table: {
+      //   borderCollapse: "collapse",
+      // },
+    },
+  },
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
