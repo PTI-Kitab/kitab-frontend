@@ -1,7 +1,211 @@
-import { Text, Stack, Image, Show, Icon, Button } from "@chakra-ui/react";
+import useApi, { ResponseModel, useToastErrorHandler } from "@/hooks/useApi";
+import { useAuth } from "@/hooks/useAuth";
+import { useParams } from "@/router";
+import {
+  Text,
+  Stack,
+  Image,
+  Show,
+  Icon,
+  Button,
+  Input,
+  useToast,
+  Spinner,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  Tooltip,
+} from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { FaLocationDot } from "react-icons/fa6";
 
+type KamarDto = {
+  occupancy: number;
+  GambarKamar: string[];
+  id: number;
+  namaKamar: string;
+  description: string;
+  harga: number;
+  fasilitas: string;
+  ukuran: string;
+  gender: "pria" | "wanita" | "campur";
+  capacity: number;
+  kostId: number;
+  createdAt: Date;
+  updatedAt: Date;
+  kost: Kost;
+};
+
+type Kost = {
+  id: number;
+  namaKost: string;
+  alamat: string;
+  pemilik: Pemilik;
+};
+
+type Pemilik = {
+  firstName: string;
+  lastName: string | null;
+  noHp: string;
+  email: string;
+};
+
+type Booking = {
+  checkIn: string; // iso date
+  checkOut: string; // iso date
+};
+
+const BookingSection = ({ kamar }: { kamar: KamarDto }) => {
+  const api = useApi();
+  const toast = useToast();
+  const errorHandler = useToastErrorHandler();
+  const auth = useAuth();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Booking>();
+
+  return (
+    <Stack>
+      <Text fontSize={"3xl"}>Booking</Text>
+
+      <Text fontWeight={"semibold"}>Ukuran Kamar</Text>
+      <Text>{kamar.ukuran}</Text>
+      <Text fontWeight={"semibold"}>Gender Kamar</Text>
+      {/* capitalize first word */}
+      <Text>
+        {kamar.gender
+          .split(" ")
+          .map((word) => word[0].toUpperCase() + word.slice(1))
+          .join(" ")}
+      </Text>
+      <form
+        onSubmit={handleSubmit((data) => {
+          api
+            .post(`/client/kost/${kamar.kostId}/kamar/${kamar.id}`, {
+              checkIn: new Date(data.checkIn).toISOString(),
+              checkOut: new Date(data.checkOut).toISOString(),
+            })
+            .then(() => {
+              toast({
+                title: "Berhasil booking",
+                description: "Silahkan cek myKost melanjutkan pembayaran",
+                status: "success",
+                duration: 3000,
+                isClosable: true,
+              });
+            })
+            .catch(errorHandler);
+        })}
+      >
+        <FormControl isInvalid={!!errors.checkIn}>
+          <FormLabel>Tanggal Masuk</FormLabel>
+          <Input
+            type="date"
+            {...register("checkIn", {
+              required: "Check in date harus diisi",
+              min: {
+                value: new Date().toISOString().split("T")[0],
+                message: "Check out date harus diatas dari hari ini",
+              },
+            })}
+          ></Input>
+          <FormErrorMessage>{errors.checkIn?.message}</FormErrorMessage>
+        </FormControl>
+
+        <FormControl isInvalid={!!errors.checkOut}>
+          <FormLabel>Tanggal Keluar</FormLabel>
+          <Input
+            type="date"
+            {...register("checkOut", {
+              required: "Check out date harus diisi",
+              // minimum check out date is 1 month
+              min: {
+                value: new Date(new Date().setMonth(new Date().getMonth() + 1))
+                  .toISOString()
+                  .split("T")[0],
+                message: "Minimal booking adalah 1 bulan",
+              },
+            })}
+          ></Input>
+          <FormErrorMessage>{errors.checkOut?.message}</FormErrorMessage>
+        </FormControl>
+
+        <Tooltip
+          isDisabled={
+            auth.status !== "unauthenticated" &&
+            kamar.capacity !== kamar.occupancy
+          }
+          label={
+            auth.status === "unauthenticated"
+              ? "Login terlebih dahulu untuk booking kamar ini"
+              : "Kamar sudah penuh"
+          }
+        >
+          <Button
+            mt={"1em"}
+            type="submit"
+            variant={"solid"}
+            colorScheme={"blue"}
+            w={"full"}
+            bgGradient="linear(to-r, rgb(1, 16, 141), rgb(1, 152, 189)),"
+            // _hover={{
+            //   opacity: "1",
+            // }}
+            isDisabled={
+              kamar.capacity === kamar.occupancy ||
+              auth.status === "unauthenticated"
+            }
+          >
+            Booking
+          </Button>
+        </Tooltip>
+      </form>
+    </Stack>
+  );
+};
+
 const KamarPage = () => {
+  const api = useApi();
+  const toast = useToast();
+  const errorHandler = useToastErrorHandler();
+  const params = useParams("/kost/:kostId/kamar/:kamarId");
+
+  const [kamar, setKamar] = useState<KamarDto>();
+  const [isLoading, setIsLoading] = useState(true);
+  const [currImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    api
+      .get<ResponseModel<KamarDto>>(
+        `/client/kost/${params.kostId}/kamar/${params.kamarId}`
+      )
+      .then((res) => setKamar(res.data.data))
+      .catch(errorHandler)
+      .finally(() => setIsLoading(false));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params]);
+
+  if (isLoading) {
+    return (
+      <Stack flex={1} align={"center"} justify={"center"}>
+        <Spinner size={"xl"} color="white" />
+      </Stack>
+    );
+  }
+
+  if (!kamar) {
+    return (
+      <Stack flex={1} align={"center"} justify={"center"} color={"white"}>
+        <Text>Tidak dapat menemukan kamar</Text>
+      </Stack>
+    );
+  }
+
   return (
     <>
       <Stack direction={"row"}>
@@ -19,36 +223,30 @@ const KamarPage = () => {
             position={"relative"}
           >
             <Stack>
-              <Stack position="relative">
-                <Image
-                  src="/background/pic1.png"
-                  w="100%"
-                  h="auto"
-                  zIndex={0}
-                />
-                <Button
-                  position="absolute"
-                  bottom={0}
-                  right={0}
-                  bgColor="white"
-                  color="black"
-                  zIndex={1}
-                  rounded={"full"}
-                  fontWeight={"light"}
-                  marginBottom={"0.8em"}
-                  marginEnd={"1em"}
-                  boxShadow={"dark-lg"}
-                  w={["10em", "10em", "10em", "10em", "11em"]}
-                  h={["2em", "2.5em", "2.2em", "2.5em", "3em"]}
-                  fontSize={["0.6em", "1em", "0.7em", "1em", "1em"]}
-                >
-                  Lihat Foto Lainnya
-                </Button>
-              </Stack>
+              <Image
+                src={kamar.GambarKamar[currImage]}
+                fit={"cover"}
+                w="100%"
+                h={["16em", "16em", "24em", "24em", "24em"]}
+                rounded={"xl"}
+                zIndex={0}
+                transition={"all 0.3s ease"}
+              />
 
-              <Stack direction={"row"}>
-                <Image src="/background/pic2.png" flex={"1"} w="48%" h="auto" />
-                <Image src="/background/pic3.png" flex={"1"} w="48%" h="auto" />
+              <Stack direction={"row"} align={"center"} justify={"center"}>
+                {kamar?.GambarKamar.map((gambar, index) => (
+                  <Image
+                    key={index}
+                    src={gambar}
+                    alt={"Gambar kost"}
+                    w={["full", "full", "8em", "12em", "12em"]}
+                    h={"5em"}
+                    objectFit={"cover"}
+                    rounded={"xl"}
+                    onClick={() => setCurrentImage(index)}
+                    cursor={"pointer"}
+                  />
+                ))}
               </Stack>
             </Stack>
           </Stack>
@@ -64,12 +262,10 @@ const KamarPage = () => {
               color={"white"}
               textShadow={"md"}
               p={"1em"}
-              px={["1em", "1em", "1em", "1em", "1em"]}
               position={"relative"}
             >
-              <Stack>
-                <Text>Bonang number 1</Text>
-              </Stack>
+              {/* checkout */}
+              <BookingSection kamar={kamar} />
             </Stack>
           </Show>
 
@@ -82,44 +278,28 @@ const KamarPage = () => {
             color={"white"}
             textShadow={"md"}
             p={"1em"}
-            px={["1em", "1em", "1em", "4em", "4em"]}
+            // px={["1em", "1em", "1em", "4em", "4em"]}
           >
-            <Text fontSize={"5xl"}>Treasure Kost</Text>
+            <Text fontSize={"5xl"}>{kamar.namaKamar}</Text>
             <Stack direction={"row"} align="center" py={"0.4em"}>
               <Icon as={FaLocationDot} />
               <Text fontSize={"md"} fontWeight={"thin"}>
-                Desa Curug Sangereng, Kelapa Dua
+                {kamar.kost.alamat}
               </Text>
             </Stack>
             <Text fontSize={"3xl"}>Detail</Text>
-            <Text fontWeight={"thin"}>detail lo ada disiniiii</Text>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: kamar.description,
+              }}
+            ></div>
 
-            <Stack py={"1em"} fontWeight={"thin"}>
-              <Text fontSize={"2xl"} fontWeight={"normal"}>
-                Detail Kamar
-              </Text>
-              <Text>Tipe Kamar 3x3</Text>
-              <Text>Kamar mandi dalam</Text>
-              <Text>Listrik (Tidak termasuk)</Text>
-              <Text>Air (Termasuk)</Text>
-            </Stack>
-            <Stack py={"1em"} fontWeight={"thin"}>
-              <Text fontSize={"2xl"} fontWeight={"normal"}>
-                Fasilitas Umum
-              </Text>
-              <Text>WiFi</Text>
-              <Text>Mesin cuci</Text>
-              <Text>Jemuran</Text>
-              <Text>Pendingin Ruangan (AC)</Text>
-            </Stack>
-            <Stack py={"1em"} fontWeight={"thin"}>
-              <Text fontSize={"2xl"} fontWeight={"normal"}>
-                Peraturan Kamar
-              </Text>
-              <Text>Tidak diperbolehkan menginap</Text>
-              <Text>Tidak diperbolehkan membawa hewan peliharaan</Text>
-              <Text>Batas tamu berkunjung sampai dengan jam 10 malam</Text>
-            </Stack>
+            <Text fontSize={"3xl"}>Fasilitas</Text>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: kamar.fasilitas,
+              }}
+            ></div>
           </Stack>
         </Stack>
 
@@ -127,7 +307,6 @@ const KamarPage = () => {
         <Show breakpoint="(min-width: 766px)">
           <Stack flex={"1"}>
             <Stack
-              minH={"60vh"}
               marginEnd={["2em", "2em", "8em", "8em", "8em"]}
               my={"1em"}
               bgColor={"rgba(255, 255, 255, 0.15)"}
@@ -136,12 +315,12 @@ const KamarPage = () => {
               color={"white"}
               textShadow={"md"}
               p={"1em"}
-              px={["1em", "1em", "4em", "4em", "4em"]}
               // top={"0"}
               // right={"0"}
               // position={""}
             >
-              <Text>Bonang</Text>
+              <BookingSection kamar={kamar} />
+              {/* checkout */}
             </Stack>
           </Stack>
         </Show>
