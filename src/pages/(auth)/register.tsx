@@ -66,7 +66,7 @@ const RegisterPanel = ({
         const { confirmPassword, type, ...data } = dataRaw;
         if (dataRaw.type === "client") {
           api
-            .post("/auth/register/client")
+            .post("/auth/register/client", data)
             .then(() => {
               toast({
                 title: "Berhasil mendaftar",
