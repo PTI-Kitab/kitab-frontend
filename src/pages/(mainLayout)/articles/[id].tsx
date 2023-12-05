@@ -1,4 +1,4 @@
-import { Text, Stack, CSSReset } from "@chakra-ui/react";
+import { Text, Stack } from "@chakra-ui/react";
 import Kost101 from "@/components/Kost101";
 import { useEffect, useState } from "react";
 import useApi, {
@@ -122,8 +122,6 @@ const ArticlePage = () => {
         </Stack>
 
         <Stack my={"1em"}>
-          <CSSReset />
-
           <div
             dangerouslySetInnerHTML={{
               __html: content?.content || "",
