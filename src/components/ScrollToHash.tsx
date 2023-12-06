@@ -19,6 +19,8 @@ const ScrollToHashElement = () => {
     }
   }, [location]);
 
+  console.log(hashElement);
+
   useEffect(() => {
     if (hashElement) {
       hashElement.scrollIntoView({

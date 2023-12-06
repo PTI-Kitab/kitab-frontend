@@ -11,7 +11,6 @@ import Leaderboard from "@/components/Leaderboard";
 import Kost101 from "@/components/Kost101";
 import { useEffect, useState } from "react";
 import useApi, { ResponseModel, useToastErrorHandler } from "@/hooks/useApi";
-import ScrollToHashElement from "@/components/ScrollToHash";
 
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -70,7 +69,6 @@ const IndexPage = () => {
       align={"center"}
       mt={["2em", "2em", "4em", "4em", "4em"]}
     >
-      <ScrollToHashElement />
       <motion.div
         style={{
           scale: useTransform(scrollYProgress, [0, 0.15], [1.25, 1]),

@@ -10,6 +10,7 @@ export type Path =
   | `/admin/cms`
   | `/articles/:id`
   | `/client/myKost`
+  | `/client/myKost/:id`
   | `/kost/:kostId`
   | `/kost/:kostId/kamar/:kamarId`
   | `/listings`
@@ -24,6 +25,7 @@ export type Path =
 
 export type Params = {
   '/articles/:id': { id: string }
+  '/client/myKost/:id': { id: string }
   '/kost/:kostId': { kostId: string }
   '/kost/:kostId/kamar/:kamarId': { kostId: string; kamarId: string }
   '/pemilik/kostManager/:kostId': { kostId: string }

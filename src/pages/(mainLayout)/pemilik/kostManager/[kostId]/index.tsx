@@ -130,7 +130,7 @@ type Billing = {
     bookingId: number;
     createdAt: Date;
     updatedAt: Date;
-  };
+  }[];
 };
 
 type BillingFilter = {
@@ -224,22 +224,36 @@ const BillingCard = ({ billing }: { billing: Billing }) => {
         {billing.client.firstName} {billing.client.lastName}
       </Text>
 
-      <Stack direction={"column"} gap={0}>
+      <Stack direction={"column"} align={"end"} gap={0}>
         <Text fontSize={"sm"}>
-          {new Date(billing.Payment.createdAt).toLocaleDateString("id-ID", {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
+          {billing.Payment[0].paidDate
+            ? new Date(billing.Payment[0].paidDate).toLocaleDateString(
+                "id-ID",
+                {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                }
+              )
+            : "-"}
         </Text>
         <Stack
-          bgColor={"green.600"}
+          bgColor={
+            billing.status === "confirmed"
+              ? "green.600"
+              : billing.status === "pending"
+              ? "yellow.600"
+              : billing.status === "canceled"
+              ? "red.600"
+              : "gray.600"
+          }
           rounded={"full"}
           align={"center"}
           justify={"center"}
+          px={"1em"}
         >
-          <Text fontWeight={"bold"}>PAID</Text>
+          <Text fontWeight={"bold"}>{billing.status.toUpperCase()}</Text>
         </Stack>
       </Stack>
     </Stack>
