@@ -269,11 +269,28 @@ const BookingDetailsPage = () => {
       )}
 
       {detailBooking && (
-        <Stack my={"1em"} bgColor={"whiteAlpha.200"} p={"2em"} rounded={"2xl"}>
+        <Stack
+          my={"1em"}
+          bgColor={"whiteAlpha.200"}
+          p={"2em"}
+          rounded={"2xl"}
+          overflowX={"scroll"}
+          css={{
+            "scrollbar-width": "none",
+            "&::-webkit-scrollbar": {
+              display: "none",
+            },
+          }}
+        >
           <Text fontWeight={"bold"} fontSize={"2xl"}>
             Detail Kamar
           </Text>
-          <Table textColor={"white"} variant={"simple"} colorScheme="blue">
+          <Table
+            textColor={"white"}
+            variant={"simple"}
+            colorScheme="blue"
+            fontSize={["xs", "sm", "md", "md", "md"]}
+          >
             <Tbody>
               <Tr>
                 <Td>Nama Kamar</Td>
