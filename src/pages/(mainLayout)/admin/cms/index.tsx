@@ -148,6 +148,7 @@ const Kost101Manager = () => {
             setModalState({
               mode: "create",
             });
+            resetArticleForm();
           }}
         >
           Buat Baru
@@ -204,6 +205,7 @@ const Kost101Manager = () => {
                     mode: "edit",
                     currentArticle: res.data.data,
                   });
+                  resetArticleForm(res.data.data);
                 })
                 .catch((err) => {
                   handleError(err);
