@@ -306,7 +306,7 @@ const RegisterPage = () => {
       </Text>
       <Text
         textColor={"white"}
-        fontSize={["2xl", "3xl", "xl", "3xl", "5xl"]}
+        fontSize={["2xl", "3xl", "xl", "3xl", "3xl"]}
         fontWeight={"semibold"}
       >
         Kost Information to
