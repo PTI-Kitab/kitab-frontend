@@ -98,7 +98,7 @@ const ListingPage = () => {
     fetchListing();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedFilter]);
+  }, [debouncedFilter, page]);
 
   return (
     <Stack
@@ -300,7 +300,7 @@ const ListingPage = () => {
           flex={"2"}
           // borderRadius={"1em"}
           ml={["0em", "0em", "0em", "1em", "1em"]}
-          overflow={"scroll"}
+          overflow={"hidden"}
           spacing={["1em", "1em", "1em", "0em", "0em"]}
           gap={"1em"}
         >
