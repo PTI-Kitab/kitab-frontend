@@ -15,10 +15,14 @@ import {
   FormLabel,
   FormErrorMessage,
   Tooltip,
+  Heading,
+  Link,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaLocationDot } from "react-icons/fa6";
+
+import { Link as RouterLink } from "react-router-dom";
 
 type KamarDto = {
   occupancy: number;
@@ -268,6 +272,33 @@ const KamarPage = () => {
               <BookingSection kamar={kamar} />
             </Stack>
           </Show>
+
+          <Stack
+            marginStart={["2em", "2em", "8em", "8em", "8em"]}
+            my={"1em"}
+            bgColor={"rgba(255, 255, 255, 0.15)"}
+            backdropFilter={"blur(4px)"}
+            rounded={"2xl"}
+            color={"white"}
+            textShadow={"md"}
+            p={"1em"}
+            px={["1em", "1em", "1em", "1em", "1em"]}
+            position={"relative"}
+          >
+            <Link
+              as={RouterLink}
+              to={`/kost/${params.kostId}`}
+              fontWeight={"bold"}
+              fontSize={"2xl"}
+            >
+              {kamar.kost.namaKost}
+            </Link>
+            <Text>
+              Dikelola Oleh: {kamar.kost.pemilik.firstName}{" "}
+              {kamar.kost.pemilik.lastName}
+            </Text>
+            <Text>Kontak: {kamar.kost.pemilik.noHp}</Text>
+          </Stack>
 
           <Stack
             marginStart={["2em", "2em", "8em", "8em", "8em"]}
