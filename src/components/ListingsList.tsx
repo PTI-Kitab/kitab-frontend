@@ -7,6 +7,7 @@ import {
   Icon,
   Badge,
   Tooltip,
+  Link,
 } from "@chakra-ui/react";
 import {
   FaLocationDot,
@@ -63,9 +64,13 @@ const ListingsList = ({ kamar }: { kamar: Kamar }) => {
           >
             <Stack direction={"column"} gap={0}>
               <Stack direction={"row"} align={"center"}>
-                <Text fontSize={["md", "xl", "2xl", "2xl", "2xl"]}>
+                <Link
+                  as={RouterLink}
+                  to={`/kost/${kamar.kost.id}/kamar/${kamar.id}`}
+                  fontSize={["md", "xl", "2xl", "2xl", "2xl"]}
+                >
                   {kamar.namaKamar}
-                </Text>
+                </Link>
 
                 <Tooltip
                   label={`Kamar ini ${
@@ -87,9 +92,9 @@ const ListingsList = ({ kamar }: { kamar: Kamar }) => {
                 </Tooltip>
               </Stack>
 
-              <RouterLink to={`/kost/${kamar.kost.id}`}>
+              <Link as={RouterLink} to={`/kost/${kamar.kost.id}`}>
                 {kamar.kost.namaKost}
-              </RouterLink>
+              </Link>
 
               <HStack>
                 <Icon as={FaLocationDot} color={"white"} />
