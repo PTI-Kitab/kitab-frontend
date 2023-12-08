@@ -33,6 +33,7 @@ import useApi, { ResponseModel, useToastErrorHandler } from "@/hooks/useApi";
 import { useEffect, useState } from "react";
 import { useDebounce } from "@/hooks/useHook";
 import { useForm } from "react-hook-form";
+import useTitle from "@/hooks/useTitle";
 
 type Kamar = {
   GambarKamar: string[];
@@ -57,6 +58,7 @@ type ListingFilter = {
 };
 
 const ListingPage = () => {
+  useTitle("KITAB - Cari kost");
   const api = useApi();
   const handleError = useToastErrorHandler();
 

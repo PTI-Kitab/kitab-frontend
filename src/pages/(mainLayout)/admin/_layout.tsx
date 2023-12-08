@@ -1,5 +1,6 @@
 import DashboardLayout from "@/components/layouts/Dashboard";
 import { useAuth } from "@/hooks/useAuth";
+import useTitle from "@/hooks/useTitle";
 import { useNavigate } from "@/router";
 import { useToast } from "@chakra-ui/react";
 import { useEffect } from "react";
@@ -20,6 +21,7 @@ const menu = [
 ];
 
 const AdminLayoutPage = () => {
+  useTitle("KITAB - Admin");
   const auth = useAuth();
   const toast = useToast();
   const navigate = useNavigate();

@@ -1,5 +1,6 @@
 import useApi, { ResponseModel, useToastErrorHandler } from "@/hooks/useApi";
 import { useAuth } from "@/hooks/useAuth";
+import useTitle from "@/hooks/useTitle";
 import { useNavigate } from "@/router";
 import {
   Text,
@@ -33,6 +34,7 @@ type ProfileDto = {
 };
 
 const UserProfile = () => {
+  useTitle("KITAB - Edit Profil");
   // hooks
   const auth = useAuth();
   const navigate = useNavigate();

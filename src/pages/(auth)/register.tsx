@@ -1,4 +1,5 @@
 import useApi, { useToastErrorHandler } from "@/hooks/useApi";
+import useTitle from "@/hooks/useTitle";
 import { useNavigate } from "@/router";
 import {
   Text,
@@ -35,6 +36,7 @@ const RegisterPanel = ({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   type: "client" | "pemilik";
 }) => {
+  useTitle("KITAB - Register");
   const {
     register,
     control,

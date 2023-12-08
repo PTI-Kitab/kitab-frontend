@@ -62,7 +62,7 @@ const Leaderboard = ({ kosts }: { kosts: KostListing[] }) => {
         >
           <Stack
             as={Link}
-            to={`/kamar/${kosts[0].id}`}
+            to={`/kost/${kosts[0].id}`}
             w={"full"}
             h={["18em", "18em", "16em", "24em", "24em"]}
             bgColor={"#D9D9D9"}
@@ -84,7 +84,7 @@ const Leaderboard = ({ kosts }: { kosts: KostListing[] }) => {
           </Stack>
           <Stack
             as={Link}
-            to={`/kamar/${kosts[1].id}`}
+            to={`/kost/${kosts[1].id}`}
             w={"full"}
             h={["16em", "16em", "14em", "18em", "18em"]}
             bgColor={"#D9D9D9"}
@@ -104,7 +104,7 @@ const Leaderboard = ({ kosts }: { kosts: KostListing[] }) => {
           </Stack>
           <Stack
             as={Link}
-            to={`/kamar/${kosts[2].id}`}
+            to={`/kost/${kosts[2].id}`}
             w={"full"}
             h={["18em", "18em", "16em", "24em", "24em"]}
             bgColor={"#D9D9D9"}
@@ -137,7 +137,7 @@ const Leaderboard = ({ kosts }: { kosts: KostListing[] }) => {
         >
           <Stack
             as={Link}
-            to={`/kamar/${kosts[0].id}`}
+            to={`/kost/${kosts[0].id}`}
             w={"16em"}
             h={["16em", "16em", "14em", "18em", "18em"]}
             bgColor={"#D9D9D9"}
@@ -162,7 +162,7 @@ const Leaderboard = ({ kosts }: { kosts: KostListing[] }) => {
           </Stack>
           <Stack
             as={Link}
-            to={`/kamar/${kosts[1].id}`}
+            to={`/kost/${kosts[1].id}`}
             w={"20em"}
             h={["18em", "18em", "16em", "24em", "24em"]}
             bgColor={"#D9D9D9"}
@@ -189,7 +189,7 @@ const Leaderboard = ({ kosts }: { kosts: KostListing[] }) => {
           </Stack>
           <Stack
             as={Link}
-            to={`/kamar/${kosts[2].id}`}
+            to={`/kost/${kosts[2].id}`}
             w={"16em"}
             h={["16em", "16em", "14em", "18em", "18em"]}
             bgColor={"#D9D9D9"}

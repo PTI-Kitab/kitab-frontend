@@ -2,6 +2,7 @@ import CKEditorWrapper from "@/components/CKEditor";
 import DropZone from "@/components/DropZone";
 import useApi, { ResponseModel, useToastErrorHandler } from "@/hooks/useApi";
 import { useAuth } from "@/hooks/useAuth";
+import useTitle from "@/hooks/useTitle";
 import { InfoIcon } from "@chakra-ui/icons";
 import {
   Text,
@@ -96,6 +97,7 @@ const KostCard = ({ kost }: { kost: KostListing }) => {
 };
 
 const KostManagerPage = () => {
+  useTitle("KITAB - Kost Manager");
   const auth = useAuth();
   const api = useApi();
   const handleError = useToastErrorHandler();

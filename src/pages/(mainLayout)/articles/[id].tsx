@@ -10,6 +10,7 @@ import { useNavigate, useParams } from "@/router";
 import { AxiosError } from "axios";
 import LoadingScreen from "@/components/LoadingScreen";
 import ResetScroll from "@/components/ResetScroll";
+import useTitle from "@/hooks/useTitle";
 
 type Article101 = {
   id: number;
@@ -81,6 +82,8 @@ const ArticlePage = () => {
       })
       .catch(errorHandler);
   };
+
+  useTitle(`KITAB - ${content?.title}`);
 
   if (isLoading) {
     return <LoadingScreen />;

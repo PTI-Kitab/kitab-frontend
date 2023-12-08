@@ -14,6 +14,7 @@ import useApi, { ResponseModel, useToastErrorHandler } from "@/hooks/useApi";
 import { useEffect, useState } from "react";
 import { useParams } from "@/router";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import useTitle from "@/hooks/useTitle";
 
 type KostDetail = {
   id: number;
@@ -81,6 +82,8 @@ const KostPage = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
+
+  useTitle(`KITAB - Kost ${kost?.namaKost}`);
 
   if (isLoading) {
     return (

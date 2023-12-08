@@ -1,7 +1,9 @@
+import useTitle from "@/hooks/useTitle";
 import { Stack, Text, Badge, Image, Wrap } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
 const AboutUsPage = () => {
+  useTitle("KITAB - About Us");
   return (
     <>
       <Stack

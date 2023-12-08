@@ -1,8 +1,11 @@
 import Layout from "@/components/layouts/Layout";
+import useTitle from "@/hooks/useTitle";
 import { Button, Stack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 const NotFoundPage = () => {
+  useTitle("KITAB - Page Not Found");
+
   return (
     <Layout>
       <Stack

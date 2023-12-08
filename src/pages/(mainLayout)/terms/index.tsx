@@ -1,6 +1,9 @@
+import useTitle from "@/hooks/useTitle";
 import { Stack, Text } from "@chakra-ui/react";
 
 const TermsPage = () => {
+  useTitle("KITAB - Syarat dan Ketentuan");
+
   return (
     <Stack direction={"column"}>
       <Stack

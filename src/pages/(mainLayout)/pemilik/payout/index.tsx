@@ -1,5 +1,6 @@
 import useApi, { ResponseModel, useToastErrorHandler } from "@/hooks/useApi";
 import { useAuth } from "@/hooks/useAuth";
+import useTitle from "@/hooks/useTitle";
 import { InfoIcon } from "@chakra-ui/icons";
 import {
   Text,
@@ -29,6 +30,7 @@ type UserBalance = {
 };
 
 const PayoutPage = () => {
+  useTitle("KITAB - Payout");
   const auth = useAuth();
   const api = useApi();
   const toast = useToast();

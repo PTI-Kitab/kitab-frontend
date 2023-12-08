@@ -49,6 +49,7 @@ import { FaPenToSquare, FaTrash } from "react-icons/fa6";
 import { Controller, useForm } from "react-hook-form";
 import DropZone from "@/components/DropZone";
 import CKEditorWrapper from "@/components/CKEditor";
+import useTitle from "@/hooks/useTitle";
 
 type Kost = {
   GambarKost: string[];
@@ -261,6 +262,7 @@ const BillingCard = ({ billing }: { billing: Billing }) => {
 };
 
 const SettingKostPage = () => {
+  useTitle("KITAB - Setting Kost");
   const auth = useAuth();
   const api = useApi();
   const toast = useToast();

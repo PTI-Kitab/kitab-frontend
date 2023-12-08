@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import useApi, { ResponseModel, useToastErrorHandler } from "@/hooks/useApi";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import useTitle from "@/hooks/useTitle";
 
 type Article101 = {
   id: number;
@@ -22,6 +23,7 @@ type Article101 = {
 };
 
 const IndexPage = () => {
+  useTitle("KITAB - Home");
   // hooks
   const api = useApi();
   const errorHandler = useToastErrorHandler();
@@ -207,19 +209,25 @@ const IndexPage = () => {
         <Leaderboard
           kosts={[
             {
-              id: 1,
-              namaKamar: "Kost 1",
-              GambarKamar: ["home/kamar_kos.png"],
+              id: 5,
+              namaKamar: "PakCe Kost",
+              GambarKamar: [
+                "https://kitab.jamu.online/api/public/fef82255-ab80-4737-bbe1-cdd76437f309.jpg",
+              ],
             },
             {
-              id: 2,
-              namaKamar: "Kost Best",
-              GambarKamar: ["home/kamar_kos.png"],
+              id: 6,
+              namaKamar: "Treasure Kost",
+              GambarKamar: [
+                "https://kitab.jamu.online/api/public/d120cd1b-f19b-4a1f-ade7-e10685d2c55b.jpg",
+              ],
             },
             {
-              id: 3,
-              namaKamar: "Kost 2",
-              GambarKamar: ["home/kamar_kos.png"],
+              id: 8,
+              namaKamar: "Kost Medang Lestari",
+              GambarKamar: [
+                "https://kitab.jamu.online/api/public/e3efdda0-38b1-46e4-b998-1775a71f1451.jpeg",
+              ],
             },
           ]}
         />

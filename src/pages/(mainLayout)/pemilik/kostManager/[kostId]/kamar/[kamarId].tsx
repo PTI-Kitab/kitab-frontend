@@ -2,6 +2,7 @@ import CKEditorWrapper from "@/components/CKEditor";
 import DropZone from "@/components/DropZone";
 import useApi, { ResponseModel, useToastErrorHandler } from "@/hooks/useApi";
 import { useAuth } from "@/hooks/useAuth";
+import useTitle from "@/hooks/useTitle";
 import { useNavigate, useParams } from "@/router";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import {
@@ -66,6 +67,7 @@ type KamarDto = {
 };
 
 const SettingKamarPage = () => {
+  useTitle("KITAB - Setting Kamar");
   const auth = useAuth();
   const api = useApi();
   const toast = useToast();

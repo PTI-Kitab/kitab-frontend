@@ -1,4 +1,5 @@
 import { useAuth } from "@/hooks/useAuth";
+import useTitle from "@/hooks/useTitle";
 import {
   Text,
   Stack,
@@ -24,6 +25,7 @@ type LoginDto = {
 };
 
 const LoginPage = () => {
+  useTitle("KITAB - Login");
   // const navigate = useNavigate();
   const auth = useAuth();
 

@@ -1,5 +1,6 @@
 import useApi, { ResponseModel, useToastErrorHandler } from "@/hooks/useApi";
 import { useAuth } from "@/hooks/useAuth";
+import useTitle from "@/hooks/useTitle";
 import { useParams } from "@/router";
 import {
   Text,
@@ -174,7 +175,6 @@ const BookingSection = ({ kamar }: { kamar: KamarDto }) => {
 
 const KamarPage = () => {
   const api = useApi();
-  const toast = useToast();
   const errorHandler = useToastErrorHandler();
   const params = useParams("/kost/:kostId/kamar/:kamarId");
 
@@ -193,6 +193,8 @@ const KamarPage = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
+
+  useTitle(`KITAB - Kamar ${kamar?.namaKamar}`);
 
   if (isLoading) {
     return (
