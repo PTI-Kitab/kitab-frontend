@@ -160,7 +160,7 @@ const KostPage = () => {
         <Stack pt={"2em"} rounded={"2em"}>
           <AspectRatio ratio={[16 / 10, 16 / 10, 16 / 10, 16 / 5, 16 / 5]}>
             <iframe
-              src={`https://maps.google.com/maps?q=${kost.latitude},${kost.longitude}&hl=en&z=14&amp;output=embed`}
+              src={`https://maps.google.com/maps?q=${kost.latitude},${kost.longitude}&z=15&output=embed`}
             ></iframe>
           </AspectRatio>
         </Stack>
