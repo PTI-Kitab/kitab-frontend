@@ -163,12 +163,18 @@ const AdminDashboardPage = () => {
         >
           <StatCard
             title="Total Cash Flow"
-            value={statistics.totalCashFlow}
+            value={Intl.NumberFormat("id-ID", {
+              style: "currency",
+              currency: "IDR",
+            }).format(statistics.totalCashFlow)}
             icon={FaMoneyBill}
           />
           <StatCard
             title="Total Profit"
-            value={statistics.totalEarning}
+            value={Intl.NumberFormat("id-ID", {
+              style: "currency",
+              currency: "IDR",
+            }).format(statistics.totalEarning)}
             icon={FaMoneyCheckDollar}
           />
         </Stack>
