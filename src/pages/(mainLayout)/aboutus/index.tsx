@@ -50,111 +50,76 @@ const AboutUsPage = () => {
           textAlign={"center"}
           justify={"center"}
         >
-          <motion.div
-            viewport={{ once: true }}
-            initial={{ opacity: 0, x: "-20em" }}
-            whileInView={{ opacity: 1, x: 0, rotate: -7200 }}
-            transition={{
-              ease: "easeInOut",
-              duration: 5,
-              delay: 1,
-            }}
-          >
-            <Stack minH={"10em"} border={"black"} align={"center"}>
-              <Badge colorScheme="purple" p={"0.5em"}>
-                Team Lead
-              </Badge>
-              <Image src="/avatar/patanrid.png"></Image>
-              <Text fontSize={"xl"}>Fathan Ridwan</Text>
-              <Text fontSize={"md"} lineHeight={"0.1em"}>
-                00000069524
-              </Text>
-            </Stack>
-          </motion.div>
-          <motion.div
-            viewport={{ once: true }}
-            initial={{ opacity: 0, x: "-12em" }}
-            whileInView={{ opacity: 1, x: 0, rotate: -3600 }}
-            transition={{
-              ease: "easeInOut",
-              duration: 3,
-              delay: 1.1,
-            }}
-          >
-            <Stack minH={"10em"} border={"black"} align={"center"}>
-              <Badge colorScheme="red" p={"0.5em"}>
-                Member 1
-              </Badge>
-              <Image src="/avatar/jepangnism.png"></Image>
-              <Text fontSize={"xl"}>Dimas Takeda</Text>
-              <Text fontSize={"md"} lineHeight={"0.1em"}>
-                00000068930
-              </Text>
-            </Stack>
-          </motion.div>
-          <motion.div
-            viewport={{ once: true }}
-            initial={{ opacity: 0, x: "-10em" }}
-            whileInView={{ opacity: 1, x: 0, rotate: -7200 }}
-            transition={{
-              ease: "easeInOut",
-              duration: 4,
-              delay: 1.2,
-            }}
-          >
-            <Stack minH={"10em"} border={"black"} align={"center"}>
-              <Badge colorScheme="red" p={"0.5em"}>
-                Member 2
-              </Badge>
-              <Image src="/avatar/junjakew.png"></Image>
-              <Text fontSize={"xl"}>Alvin Yohanes</Text>
-              <Text fontSize={"md"} lineHeight={"0.1em"}>
-                00000069115
-              </Text>
-            </Stack>
-          </motion.div>
-          <motion.div
-            viewport={{ once: true }}
-            initial={{ opacity: 0, y: "-16em" }}
-            whileInView={{ opacity: 1, y: 0, rotate: 3600 }}
-            transition={{
-              ease: "easeInOut",
-              duration: 3,
-              delay: 1.3,
-            }}
-          >
-            <Stack minH={"10em"} border={"black"} align={"center"}>
-              <Badge colorScheme="green" p={"0.5em"}>
-                Member 3
-              </Badge>
-              <Image src="/avatar/paelnism.png"></Image>
-              <Text fontSize={"xl"}>Rafael Herdani</Text>
-              <Text fontSize={"md"} lineHeight={"0.1em"}>
-                00000076381
-              </Text>
-            </Stack>
-          </motion.div>
-          <motion.div
-            viewport={{ once: true }}
-            initial={{ opacity: 0, y: "-16em" }}
-            whileInView={{ opacity: 1, y: 0, rotate: -3600 }}
-            transition={{
-              ease: "easeInOut",
-              duration: 3,
-              delay: 1.4,
-            }}
-          >
-            <Stack minH={"10em"} border={"black"} align={"center"}>
-              <Badge colorScheme="green" p={"0.5em"}>
-                Member 4
-              </Badge>
-              <Image src="/avatar/sipanur.png"></Image>
-              <Text fontSize={"xl"}>Sifa Nur</Text>
-              <Text fontSize={"md"} lineHeight={"0.1em"}>
-                00000082044
-              </Text>
-            </Stack>
-          </motion.div>
+          <Stack minH={"10em"} border={"black"} align={"center"}>
+            <Badge colorScheme="purple" p={"0.5em"}>
+              Team Lead
+            </Badge>
+            <Image
+              src="/avatar/fathan.png"
+              objectFit={"cover"}
+              w={"10em"}
+            ></Image>
+            <Text fontSize={"xl"}>Fathan Ridwan</Text>
+            <Text fontSize={"md"} lineHeight={"0.1em"}>
+              00000069524
+            </Text>
+          </Stack>
+          <Stack minH={"10em"} border={"black"} align={"center"}>
+            <Badge colorScheme="red" p={"0.5em"}>
+              Member 1
+            </Badge>
+            <Image
+              src="/avatar/dimas.png"
+              objectFit={"cover"}
+              w={"10.3em"}
+            ></Image>
+            <Text fontSize={"xl"}>Dimas Takeda</Text>
+            <Text fontSize={"md"} lineHeight={"0.1em"}>
+              00000068930
+            </Text>
+          </Stack>
+          <Stack minH={"10em"} border={"black"} align={"center"}>
+            <Badge colorScheme="red" p={"0.5em"}>
+              Member 2
+            </Badge>
+            <Image
+              src="/avatar/alvin.png"
+              objectFit={"cover"}
+              w={"9em"}
+            ></Image>
+            <Text fontSize={"xl"}>Alvin Yohanes</Text>
+            <Text fontSize={"md"} lineHeight={"0.1em"}>
+              00000069115
+            </Text>
+          </Stack>
+          <Stack minH={"10em"} border={"black"} align={"center"}>
+            <Badge colorScheme="green" p={"0.5em"}>
+              Member 3
+            </Badge>
+            <Image
+              src="/avatar/rafael.png"
+              objectFit={"cover"}
+              w={"10.5em"}
+            ></Image>
+            <Text fontSize={"xl"}>Rafael Herdani</Text>
+            <Text fontSize={"md"} lineHeight={"0.1em"}>
+              00000076381
+            </Text>
+          </Stack>
+          <Stack minH={"10em"} border={"black"} align={"center"}>
+            <Badge colorScheme="green" p={"0.5em"}>
+              Member 4
+            </Badge>
+            <Image
+              src="/avatar/sifa.png"
+              objectFit={"cover"}
+              w={"10.8em"}
+            ></Image>
+            <Text fontSize={"xl"}>Sifa Nur</Text>
+            <Text fontSize={"md"} lineHeight={"0.1em"}>
+              00000082044
+            </Text>
+          </Stack>
         </Wrap>
         <motion.div
           viewport={{ once: true }}
@@ -163,7 +128,7 @@ const AboutUsPage = () => {
           transition={{
             ease: "easeInOut",
             duration: 1,
-            delay: 1.5,
+            delay: 1,
           }}
         >
           <Stack w={"100%"} h={"100%"} align={"center"}>
