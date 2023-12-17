@@ -376,6 +376,7 @@ const Kost101Manager = () => {
                   <CKEditorWrapper
                     name="content"
                     control={articleFormControl}
+                    defaultValue=""
                   />
                   <FormErrorMessage>
                     {articleFormErrors.content &&
@@ -405,7 +406,10 @@ const Kost101Manager = () => {
               <form
                 onSubmit={handleSubmitArticleForm((e) => {
                   api
-                    .put(`/articles/${modalState.currentArticle?.id}`, e)
+                    .put(`/articles/${modalState.currentArticle?.id}`, {
+                      title: e.title,
+                      content: e.content,
+                    })
                     .then(() => {
                       toast({
                         title: "Berhasil",

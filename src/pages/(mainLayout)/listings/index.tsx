@@ -34,6 +34,7 @@ import { useEffect, useState } from "react";
 import { useDebounce } from "@/hooks/useHook";
 import { useForm } from "react-hook-form";
 import useTitle from "@/hooks/useTitle";
+import { useSearchParams } from "react-router-dom";
 
 type Kamar = {
   GambarKamar: string[];
@@ -66,10 +67,12 @@ const ListingPage = () => {
 
   const [listings, setListings] = useState<Kamar[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [searchParams, _setSearchParams] = useSearchParams();
 
   const [filter, setFilter] = useState<ListingFilter>({
     hargaGte: 0,
     hargaLte: 10000000,
+    search: searchParams.get("search") ?? undefined,
   });
   const [page, setPage] = useState<number>(1);
 
