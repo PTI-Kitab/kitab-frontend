@@ -227,8 +227,8 @@ const BillingCard = ({ billing }: { billing: Billing }) => {
 
       <Stack direction={"column"} align={"end"} gap={0}>
         <Text fontSize={"sm"}>
-          {billing.Payment[0].paidDate
-            ? new Date(billing.Payment[0].paidDate).toLocaleDateString(
+          {billing.Payment.length
+            ? new Date(billing.Payment[0].paidDate!).toLocaleDateString(
                 "id-ID",
                 {
                   weekday: "long",
