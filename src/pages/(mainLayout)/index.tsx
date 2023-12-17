@@ -14,6 +14,8 @@ import useApi, { ResponseModel, useToastErrorHandler } from "@/hooks/useApi";
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import useTitle from "@/hooks/useTitle";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 type Article101 = {
   id: number;
@@ -33,6 +35,14 @@ const IndexPage = () => {
   // [Articles]
   const [articles, setArticles] = useState<Article101[]>([]);
   const [isLoadCandidate, setIsLoadCandidate] = useState<boolean>(true);
+
+  const {
+    handleSubmit,
+    register,
+    // formState: { errors },
+  } = useForm<{ title: string }>();
+
+  const nav = useNavigate();
 
   useEffect(() => {
     api
@@ -178,17 +188,30 @@ const IndexPage = () => {
         <Text pb={"1em"} textColor={"white"}>
           cari apa yang kamu butuhkan!
         </Text>
-        <InputGroup w={"60%"} bgColor={"whiteAlpha.200"} rounded={"1em"}>
-          <Input
-            rounded={"1em"}
-            borderColor={"gray.500"}
-            placeholder="Treasure Kost, Warteg Murah, Kost terdekat dari UMN"
-            textOverflow={"ellipsis"}
-          />
-          <InputRightElement>
-            <SearchIcon pr={"1em"} boxSize={"10"} color={"gray.500"} />
-          </InputRightElement>
-        </InputGroup>
+        <Stack
+          as={"form"}
+          w={"full"}
+          align={"center"}
+          color={"white"}
+          onSubmit={handleSubmit((e) => {
+            nav(`/listings?search=${e.title}`);
+          })}
+        >
+          <InputGroup w={"60%"} bgColor={"whiteAlpha.200"} rounded={"1em"}>
+            <Input
+              {...register("title", {
+                required: "Search tidak boleh kosong",
+              })}
+              rounded={"1em"}
+              borderColor={"gray.500"}
+              placeholder="Treasure Kost, Warteg Murah, Kost terdekat dari UMN"
+              textOverflow={"ellipsis"}
+            />
+            <InputRightElement>
+              <SearchIcon pr={"1em"} boxSize={"10"} color={"gray.500"} />
+            </InputRightElement>
+          </InputGroup>
+        </Stack>
       </motion.div>
       <motion.div
         style={{
